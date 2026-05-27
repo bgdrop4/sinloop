@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SINLOOP — El sistema completo para eliminar los vicios, construir hábitos de élite y convertirte en un superhumano.">
+  <title>SINLOOP — Rompe el Loop. Conviértete en Superhumano.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0A0A0A;
+      --bg2:      #0F0F0F;
+      --bg3:      #141414;
+      --card:     #111111;
+      --border:   rgba(255,255,255,0.06);
+      --border-g: rgba(212,160,30,0.25);
+      --gold:     #D4A01E;
+      --gold2:    #E8B830;
+      --white:    #FFFFFF;
+      --gray:     #6B6B6B;
+      --gray2:    #999999;
+      --gray3:    #CCCCCC;
+      --font:     'Inter', sans-serif;
+      --radius:   12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── REUSABLE ── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    .label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+
+    .h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .h3 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .gold { color: var(--gold); }
+    .italic { font-style: italic; }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 17px 44px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212,160,30,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .card-gold {
+      border-color: var(--border-g);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,160,30,0.5); }
+      50%       { box-shadow: 0 0 0 10px rgba(212,160,30,0); }
+    }
+
+    /* ════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* ════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════ */
+    .hero {
+      padding: 130px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at top, rgba(212,160,30,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: var(--gray2);
+      animation: fadeUp .4s ease forwards;
+    }
+
+    .stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+
+    .hero-title {
+      margin-bottom: 20px;
+      animation: fadeUp .4s ease .08s both;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--gray3);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+      line-height: 1.7;
+      animation: fadeUp .4s ease .16s both;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      animation: fadeUp .4s ease .24s both;
+    }
+
+    .hero-cta-group .btn {
+      animation: glow-pulse 2.5s 1s infinite;
+      font-size: 16px;
+      padding: 18px 52px;
+    }
+
+    .hero-cta-group .btn:hover { animation: none; }
+
+    .hero-trust {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--gray2);
+      animation: fadeUp .4s ease .32s both;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-icon { font-size: 14px; }
+
+    /* Before / After */
+    .ba-wrap {
+      margin-top: 56px;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeUp .4s ease .4s both;
+    }
+
+    .ba-photo {
+      flex: 1;
+      aspect-ratio: 3/4;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ba-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%);
+    }
+
+    .ba-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--bg3);
+      border: 1px dashed rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .ba-photo-placeholder span { font-size: 28px; }
+
+    .ba-label {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(0,0,0,0.7);
+      color: var(--gray2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .ba-label.after-label { color: var(--gold); }
+
+    .ba-caption {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* ════════════════════════════════════════════
+       STATS
+    ════════════════════════════════════════════ */
+    .stats-section {
+      padding: 60px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      padding: 28px 20px;
+      text-align: center;
+      border-radius: var(--radius);
+    }
+
+    .stat-card .stat-num {
+      display: block;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-lbl {
+      font-size: 13px;
+      color: var(--gray2);
+      font-weight: 500;
+    }
+
+    /* ════════════════════════════════════════════
+       BLUEPRINT / SYSTEM INTRO
+    ════════════════════════════════════════════ */
+    .blueprint-section {
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .ebook-mockup {
+      margin: 48px auto 0;
+      max-width: 360px;
+      background: linear-gradient(135deg, #1A1A1A 0%, #111 100%);
+      border: 1px solid var(--border-g);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: left;
+    }
+
+    .ebook-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .ebook-title {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .ebook-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 20px;
+    }
+
+    .ebook-meta {
+      font-size: 13px;
+      color: var(--gray2);
+    }
+
+    /* ════════════════════════════════════════════
+       PAIN POINTS
+    ════════════════════════════════════════════ */
+    .pain-section { padding: 100px 24px; }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .pain-card {
+      padding: 28px 26px;
+      border-radius: var(--radius);
+    }
+
+    .pain-card-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .pain-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .pain-card-text {
+      font-size: 14px;
+      color: var(--gray2);
+      line-height: 1.6;
+    }
+
+    .pain-bridge {
+      text-align: center;
+      margin-top: 60px;
+      padding: 0 24px;
+    }
+
+    .pain-bridge p {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 500;
+      color: var(--gray3);
+      line-height: 1.5;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .pain-bridge strong { color: var(--white); font-weight: 700; }
+
+    /* ════════════════════════════════════════════
+       WHAT'S INSIDE — 4 FASES
+    ════════════════════════════════════════════ */
+    .inside-section { padding: 100px 24px; background: var(--bg2); }
+
+    .phases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 52px;
+    }
+
+    .phase-row {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 26px;
+      border-radius: var(--radius);
+      transition: border-color .2s;
+    }
+
+    .phase-row:hover { border-color: var(--border-g); }
+
+    .phase-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--border-g);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0;
+      flex-shrink: 0;
+    }
+
+    .phase-content {}
+
+    .phase-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .phase-items-inline {
+      font-size: 13px;
+      color: var(--gray2);
+    }
+
+    .phase-emoji { font-size: 20px; }
+
+    /* BONUS card */
+    .bonus-card {
+      margin-top: 20px;
+      padding: 28px 28px 28px 80px;
+      border-radius: var(--radius);
+      position: relative;
+    }
+
+    .bonus-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .bonus-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bonus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gray3);
+    }
+
+    .bonus-item::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ════════════════════════════════════════════
+       WHY THIS WORKS
+    ════════════════════════════════════════════ */
+    .why-section { padding: 100px 24px; text-align: center; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+      text-align: left;
+    }
+
+    .why-card {
+      padding: 28px 24px;
+      border-radius: var(--radius);
+    }
+
+    .why-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .why-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .why-text {
+      font-size: 14px;
+      color: var(--gray2);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════════
+       TESTIMONIALS
+    ════════════════════════════════════════════ */
+    .testimonials-section {
+      padding: 100px 24px;
+      background: var(--bg2);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .testi-card {
+      padding: 26px 24px;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .testi-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1.5px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .testi-meta {}
+
+    .testi-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .testi-info {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+
+    .testi-quote {
+      font-size: 14px;
+      color: var(--gray3);
+      line-height: 1.7;
+      font-style: italic;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .testi-quote::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      font-size: 24px;
+      color: var(--gold);
+      font-style: normal;
+      line-height: 1;
+    }
+
+    .testi-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(212,160,30,0.08);
+      border: 1px solid rgba(212,160,30,0.2);
+      padding: 5px 12px;
+      border-radius: 99px;
+    }
+
+    .testi-result::before { content: '✓'; }
+
+    /* ════════════════════════════════════════════
+       PRICING
+    ════════════════════════════════════════════ */
+    .pricing-section { padding: 100px 24px; text-align: center; }
+
+    .pricing-sub {
+      font-size: 16px;
+      color: var(--gray2);
+      margin-top: 12px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 52px;
+      text-align: left;
+    }
+
+    .price-card {
+      padding: 36px 32px;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .price-card.popular {
+      border-color: var(--border-g) !important;
+      background: linear-gradient(150deg, #121212 0%, rgba(212,160,30,0.04) 100%);
+    }
+
+    .popular-chip {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .price-tier {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .price-desc {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+
+    .price-block { margin-bottom: 32px; }
+
+    .price-was {
+      font-size: 14px;
+      color: var(--gray);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .price-now {
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .price-card.popular .price-now { color: var(--gold); }
+
+    .price-sym { font-size: 30px; vertical-align: super; }
+
+    .price-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 32px;
+    }
+
+    .price-list li {
+      font-size: 14px;
+      color: var(--gray3);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.4;
+    }
+
+    .price-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-full {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+
+    /* ════════════════════════════════════════════
+       GUARANTEE
+    ════════════════════════════════════════════ */
+    .guarantee-section {
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .guarantee-box {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      text-align: left;
+      max-width: 680px;
+    }
+
+    .shield-icon { font-size: 44px; flex-shrink: 0; }
+
+    .guarantee-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .guarantee-text {
+      font-size: 15px;
+      color: var(--gray2);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════════
+       FAQ
+    ════════════════════════════════════════════ */
+    .faq-section { padding: 100px 24px; }
+
+    .faq-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    details[open] { border-color: var(--border-g); }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: color .2s;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details[open] summary { color: var(--gold); }
+
+    summary .faq-icon {
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      font-style: normal;
+      font-weight: 300;
+      transition: transform .2s;
+    }
+
+    details[open] summary .faq-icon { transform: rotate(45deg); }
+
+    .faq-body {
+      padding: 0 24px 20px;
+      font-size: 14px;
+      color: var(--gray2);
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════════════════════
+       FINAL CTA
+    ════════════════════════════════════════════ */
+    .final-section {
+      padding: 120px 24px;
+      text-align: center;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse at bottom, rgba(212,160,30,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-title { margin-bottom: 20px; position: relative; }
+
+    .final-sub {
+      font-size: 18px;
+      color: var(--gray3);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .final-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--gray);
+      position: relative;
+    }
+
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      color: #2A2A2A;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    footer p { font-size: 12px; color: #333; }
+
+    footer a {
+      color: #3A3A3A;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
+    @media (max-width: 700px) {
+      nav { padding: 14px 18px; }
+      .nav-logo { font-size: 15px; letter-spacing: 4px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .pain-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .guarantee-box { flex-direction: column; gap: 16px; padding: 28px 24px; }
+      .ba-wrap { max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+  <nav>
+    <a href="#" class="nav-logo">SINLOOP</a>
+    <a href="#oferta" class="btn" style="padding: 10px 22px; font-size: 13px;">Ver Paquetes →</a>
+  </nav>
+
+  <!-- ══════════════════════════════ HERO ═════════════════════════════ -->
+  <section class="hero">
+    <div class="container-sm">
+      <div class="hero-stars">
+        <span class="stars">★★★★★</span>
+        <span>+100,000 hombres impactados en Instagram</span>
+      </div>
+      <h1 class="h1 hero-title">
+        Conviértete en La Versión<br>
+        Más <span class="gold italic">Poderosa</span> de Ti Mismo
+      </h1>
+      <p class="hero-sub">
+        El sistema científico y práctico para eliminar los vicios, construir hábitos de élite y convertirte en un superhumano. Sin excusas.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#oferta" class="btn">Ver Paquetes</a>
+        <div class="hero-trust">
+          <span class="trust-item"><span class="trust-icon">⚡</span> Descarga Inmediata</span>
+          <span class="trust-item"><span class="trust-icon">🔒</span> Pago Seguro</span>
+          <span class="trust-item"><span class="trust-icon">🛡️</span> Garantía 7 Días</span>
+        </div>
+      </div>
+
+      <!-- Before / After -->
+      <div class="ba-wrap">
+        <div class="ba-photo" style="border-radius: 10px 4px 4px 10px;">
+          <div class="ba-photo-placeholder">
+            <span>📸</span>
+            Tu foto ANTES
+          </div>
+          <span class="ba-label">ANTES</span>
+        </div>
+        <div class="ba-photo" style="border-radius: 4px 10px 10px 4px;">
+          <div class="ba-photo-placeholder">
+            <span>🔥</span>
+            Tu foto DESPUÉS
+          </div>
+          <span class="ba-label after-label">DESPUÉS</span>
+        </div>
+      </div>
+      <p class="ba-caption">Resultados reales. Esto podría ser tú.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ STATS ════════════════════════════ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card card">
+          <span class="stat-num">4</span>
+          <span class="stat-lbl">Fases del Sistema</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-num">+30</span>
+          <span class="stat-lbl">Páginas de Contenido</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-num">100%</span>
+          <span class="stat-lbl">Accionable desde Hoy</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-num">∞</span>
+          <span class="stat-lbl">Acceso de Por Vida</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ BLUEPRINT ═════════════════════════ -->
+  <section class="blueprint-section">
+    <div class="container-sm">
+      <span class="label">El Sistema Completo</span>
+      <h2 class="h2">
+        Tu <span class="gold">Blueprint</span> hacia el<br>Superhumano
+      </h2>
+      <p style="color:var(--gray2); margin-top:16px; font-size:16px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Todo lo que necesitas para transformar tu mente, cuerpo y espíritu en una sola guía completa y directa.
+      </p>
+      <div class="ebook-mockup">
+        <p class="ebook-tag">eBook Digital</p>
+        <h3 class="ebook-title">SINLOOP<br><span class="gold" style="font-size:18px; font-weight:500;">El Sistema de Transformación Masculina</span></h3>
+        <div class="ebook-divider"></div>
+        <p class="ebook-meta">4 Fases · Protocolo NoFap · Rutinas · Skincare · Mentalidad · DIOS</p>
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span style="font-size:11px; color:var(--gray); border:1px solid var(--border); padding:3px 10px; border-radius:99px;">+30 páginas</span>
+          <span style="font-size:11px; color:var(--gray); border:1px solid var(--border); padding:3px 10px; border-radius:99px;">Acceso inmediato</span>
+          <span style="font-size:11px; color:var(--gold); border:1px solid var(--border-g); padding:3px 10px; border-radius:99px;">Precio lanzamiento</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ PAIN ══════════════════════════════ -->
+  <section class="pain-section">
+    <div class="container">
+      <div class="container-sm" style="padding:0; text-align:center; margin-bottom:0;">
+        <span class="label">El Problema</span>
+        <h2 class="h2">Sabes Que Algo<br><span class="gold">Está Fallando</span></h2>
+      </div>
+      <div class="pain-grid" style="margin-top:52px;">
+        <div class="pain-card card">
+          <span class="pain-card-icon">🔁</span>
+          <p class="pain-card-title">Atrapado en el mismo loop</p>
+          <p class="pain-card-text">Cada día intentas cambiar. Cada noche vuelves a los mismos hábitos. El ciclo nunca termina y la frustración crece.</p>
+        </div>
+        <div class="pain-card card">
+          <span class="pain-card-icon">🧠</span>
+          <p class="pain-card-title">El porno y el NoFap te consumen</p>
+          <p class="pain-card-text">Sabes que te drena energía y confianza, pero no tienes un protocolo real para romperlo definitivamente.</p>
+        </div>
+        <div class="pain-card card">
+          <span class="pain-card-icon">⏳</span>
+          <p class="pain-card-title">Procrastinas todo lo importante</p>
+          <p class="pain-card-text">Las ideas están ahí, el tiempo pasa, pero la acción nunca llega. Otro día perdido que no vuelve.</p>
+        </div>
+        <div class="pain-card card">
+          <span class="pain-card-icon">🪞</span>
+          <p class="pain-card-title">No te ves ni te sientes al nivel</p>
+          <p class="pain-card-text">Sin rutina de imagen, sin gym constante, sin cuidado personal. Sabes que hay una versión mejor de ti que no has sacado.</p>
+        </div>
+      </div>
+      <div class="pain-bridge">
+        <p>¿Y si existiera un <strong>sistema completo</strong> para salir del loop de una vez por todas?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ WHAT'S INSIDE ═════════════════════ -->
+  <section class="inside-section">
+    <div class="container">
+      <div class="container-sm" style="padding:0; text-align:center; margin-bottom:0;">
+        <span class="label">Qué Incluye</span>
+        <h2 class="h2">+30 Páginas de<br><span class="gold">Contenido Accionable</span></h2>
+      </div>
+
+      <div class="phases-list">
+        <div class="phase-row card">
+          <span class="phase-num">01</span>
+          <div class="phase-content">
+            <p class="phase-name">ELIMINA EL LOOP</p>
+            <p class="phase-items-inline">Protocolo NoFap completo · Cómo cortar con el porno · Vencer los vicios y la procrastinación de raíz</p>
+          </div>
+          <span class="phase-emoji">🔥</span>
+        </div>
+        <div class="phase-row card">
+          <span class="phase-num">02</span>
+          <div class="phase-content">
+            <p class="phase-name">CONSTRUYE EL SISTEMA</p>
+            <p class="phase-items-inline">Rutina de mañana y noche · Gym y meditación · Respiraciones · Alimentación · Relaciones que suman</p>
+          </div>
+          <span class="phase-emoji">⚙️</span>
+        </div>
+        <div class="phase-row card">
+          <span class="phase-num">03</span>
+          <div class="phase-content">
+            <p class="phase-name">IMAGEN ÉLITE</p>
+            <p class="phase-items-inline">Rutina de skincare masculino · Grooming · Presencia y carisma · Estilo que comunica poder · Glow up total</p>
+          </div>
+          <span class="phase-emoji">💎</span>
+        </div>
+        <div class="phase-row card">
+          <span class="phase-num">04</span>
+          <div class="phase-content">
+            <p class="phase-name">TRASCIENDE</p>
+            <p class="phase-items-inline">Mentalidad ganadora · Negocios y dinero · Planificación · Propósito · Cómo acercarte a DIOS</p>
+          </div>
+          <span class="phase-emoji">🌟</span>
+        </div>
+      </div>
+
+      <!-- BONUS -->
+      <div class="bonus-card card card-gold" style="padding:28px;">
+        <p class="bonus-label">También Incluido</p>
+        <p class="bonus-title">Recursos Extra</p>
+        <div class="bonus-grid">
+          <span class="bonus-item">Tracker de hábitos 30 días (PDF)</span>
+          <span class="bonus-item">Protocolo intensivo 30 días</span>
+          <span class="bonus-item">Checklist diaria imprimible</span>
+          <span class="bonus-item">Actualizaciones futuras gratis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ WHY THIS WORKS ════════════════════ -->
+  <section class="why-section">
+    <div class="container">
+      <span class="label">Por Qué Funciona</span>
+      <h2 class="h2">Transforma Cómo<br><span class="gold">Piensas, Te Ves y Actúas</span></h2>
+      <p style="color:var(--gray2); margin-top:16px; font-size:16px; max-width:500px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        No es otro libro de autoayuda genérico. Es un manual táctico diseñado para resultados medibles.
+      </p>
+      <div class="why-grid">
+        <div class="why-card card">
+          <span class="why-icon">🎯</span>
+          <p class="why-title">Sistema, No Motivación</p>
+          <p class="why-text">La motivación falla. Un sistema funciona sin importar cómo te sientas. SINLOOP te da la estructura que mantiene la acción.</p>
+        </div>
+        <div class="why-card card">
+          <span class="why-icon">🧩</span>
+          <p class="why-title">Todos los Pilares Unidos</p>
+          <p class="why-text">Mente, cuerpo, imagen, espíritu y negocios en un solo sistema coherente. Todo conectado, nada aislado.</p>
+        </div>
+        <div class="why-card card">
+          <span class="why-icon">⚡</span>
+          <p class="why-title">Resultados desde el Día 1</p>
+          <p class="why-text">Protocolos accionables inmediatos. No teoría, no relleno. Descargas y empiezas hoy mismo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ TESTIMONIALS ══════════════════════ -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div style="text-align:center;">
+        <span class="label">Resultados Reales</span>
+        <h2 class="h2">Hombres Que Ya<br><span class="gold">Rompieron el Loop</span></h2>
+        <p style="color:var(--gray2); margin-top:14px; font-size:15px;">Únete a los que ya están operando a otro nivel.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">J</div>
+            <div class="testi-meta">
+              <p class="testi-name">Javier R.</p>
+              <p class="testi-info">24 años · 6 semanas</p>
+            </div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Llevaba 2 años intentando dejar el porno. Con el protocolo de SINLOOP lo conseguí en 3 semanas. La rutina de mañana cambió mi energía por completo.</p>
+          <span class="testi-result">NoFap conseguido en 21 días</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">A</div>
+            <div class="testi-meta">
+              <p class="testi-name">Alejandro M.</p>
+              <p class="testi-info">31 años · 2 meses</p>
+            </div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">La fase de Imagen Élite me abrió los ojos. Nunca había prestado atención al skincare. Ahora la gente me pregunta qué hago diferente. Vale 10x el precio.</p>
+          <span class="testi-result">Glow up total en 8 semanas</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">D</div>
+            <div class="testi-meta">
+              <p class="testi-name">Daniel S.</p>
+              <p class="testi-info">19 años · 4 semanas</p>
+            </div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Dudaba porque soy joven y pensé que no era para mí. Error. El apartado de mentalidad y negocios me hizo ver la vida diferente. Ya tengo mi primer cliente.</p>
+          <span class="testi-result">Primer negocio a los 19 años</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ PRICING ═══════════════════════════ -->
+  <section class="pricing-section" id="oferta">
+    <div class="container">
+      <span class="label">La Oferta</span>
+      <h2 class="h2">Invierte En Tu<br><span class="gold">Mejor Versión</span></h2>
+      <p class="pricing-sub">Descarga inmediata · Precio de lanzamiento · Garantía 7 días</p>
+
+      <div class="pricing-grid">
+
+        <!-- CORE -->
+        <div class="price-card card">
+          <p class="price-tier">SINLOOP CORE</p>
+          <p class="price-desc">El sistema completo para empezar hoy</p>
+          <div class="price-block">
+            <p class="price-was">€34</p>
+            <p class="price-now"><span class="price-sym">€</span>17</p>
+          </div>
+          <ul class="price-list">
+            <li>eBook SINLOOP completo (4 fases)</li>
+            <li>Protocolo NoFap paso a paso</li>
+            <li>Rutinas de mañana y noche</li>
+            <li>Guía skincare masculino</li>
+            <li>Mentalidad, negocios y propósito</li>
+            <li>Cómo acercarte a DIOS</li>
+            <li>Acceso de por vida</li>
+          </ul>
+          <!-- 👇 Reemplaza con tu URL de producto Shopify -->
+          <a href="TU-TIENDA.myshopify.com/products/sinloop-core" class="btn-full btn btn-outline">
+            Obtener Core →
+          </a>
+        </div>
+
+        <!-- ELITE -->
+        <div class="price-card card popular">
+          <span class="popular-chip">⚡ Más Popular</span>
+          <p class="price-tier">SINLOOP ELITE</p>
+          <p class="price-desc">Sistema completo + herramientas de ejecución</p>
+          <div class="price-block">
+            <p class="price-was">€74</p>
+            <p class="price-now"><span class="price-sym">€</span>37</p>
+          </div>
+          <ul class="price-list">
+            <li>Todo lo de SINLOOP Core</li>
+            <li>Tracker de hábitos 30 días (PDF)</li>
+            <li>Protocolo intensivo 30 días</li>
+            <li>Checklist diaria imprimible</li>
+            <li>Actualizaciones futuras gratis</li>
+            <li>Acceso de por vida + bonos</li>
+          </ul>
+          <!-- 👇 Reemplaza con tu URL de producto Shopify -->
+          <a href="TU-TIENDA.myshopify.com/products/sinloop-elite" class="btn-full btn">
+            Obtener Elite →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ GUARANTEE ════════════════════════ -->
+  <section class="guarantee-section">
+    <div class="container-sm" style="display:flex; justify-content:center;">
+      <div class="guarantee-box">
+        <span class="shield-icon">🛡️</span>
+        <div>
+          <p class="guarantee-title">Garantía Total 7 Días</p>
+          <p class="guarantee-text">Si lees SINLOOP, aplicas el sistema durante 7 días y no ves valor, te devolvemos el 100% sin preguntas. Sin dramas. Sin condiciones. El único riesgo real es seguir en el loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FAQ ═══════════════════════════════ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <div style="text-align:center; margin-bottom:0;">
+        <span class="label">Preguntas Frecuentes</span>
+        <h2 class="h2">Frequently Asked<br><span class="gold">Questions</span></h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>¿Para quién es SINLOOP? <span class="faq-icon">+</span></summary>
+          <p class="faq-body">Para cualquier hombre entre 18 y 35 años que sienta que está viviendo por debajo de su potencial. No importa desde dónde partas, el sistema se adapta a tu punto de inicio.</p>
+        </details>
+        <details>
+          <summary>¿Es solo sobre NoFap? <span class="faq-icon">+</span></summary>
+          <p class="faq-body">No. NoFap es solo la Fase 1. SINLOOP cubre hábitos, rutinas, imagen personal, skincare, mentalidad, negocios y espiritualidad. El objetivo es la transformación total del hombre.</p>
+        </details>
+        <details>
+          <summary>¿Cómo recibo el eBook? <span class="faq-icon">+</span></summary>
+          <p class="faq-body">Al completar tu compra recibes un enlace de descarga inmediata por email. Acceso en segundos, compatible con cualquier dispositivo: móvil, tablet u ordenador.</p>
+        </details>
+        <details>
+          <summary>¿Funciona si ya lo he intentado antes? <span class="faq-icon">+</span></summary>
+          <p class="faq-body">Sí. La mayoría de hombres que compran SINLOOP han intentado cambiar antes y han fallado. El problema no es la voluntad, es no tener un sistema. Eso es lo que SINLOOP resuelve.</p>
+        </details>
+        <details>
+          <summary>¿Hay algún riesgo? <span class="faq-icon">+</span></summary>
+          <p class="faq-body">Ninguno. Tienes 7 días de garantía total. Si no ves valor, devolvemos el 100% sin preguntas. El único riesgo real es seguir en el loop.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FINAL CTA ═════════════════════════ -->
+  <section class="final-section">
+    <div class="container-sm">
+      <h2 class="h2 final-title">
+        ¿Listo Para Convertirte<br>En Tu Versión Más<br><span class="gold italic">Poderosa?</span>
+      </h2>
+      <p class="final-sub">Un solo paso separa al hombre que eres del superhumano que puedes ser.</p>
+      <a href="#oferta" class="btn" style="font-size:16px; padding:18px 52px;">Ver Paquetes</a>
+      <p class="final-note">Garantía 7 días · Acceso inmediato · Precio de lanzamiento</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FOOTER ════════════════════════════ -->
+  <footer>
+    <p class="footer-logo">SINLOOP</p>
+    <p style="margin-bottom:12px;">© 2026 SINLOOP · Todos los derechos reservados</p>
+    <div>
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Devoluciones</a>
+    </div>
+  </footer>
+
+</body>
+</html>
