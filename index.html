@@ -1092,16 +1092,69 @@
        RESPONSIVE
     ════════════════════════════════════════════ */
     @media (max-width: 700px) {
-      nav { padding: 14px 18px; }
-      .nav-logo { font-size: 15px; letter-spacing: 4px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      /* ── Nav ── */
+      nav { padding: 12px 16px; }
+      .nav-logo { font-size: 14px; letter-spacing: 4px; }
+      .btn { padding: 14px 28px; font-size: 14px; }
+
+      /* ── Hero ── */
+      .hero { padding: 72px 16px 48px; }
+      .hero-stars { margin-bottom: 18px; }
+
+      /* Pill móvil: más compacto */
+      .sp-pill { gap: 8px; padding: 7px 14px 7px 7px; }
+      .sp-av { width: 28px; height: 28px; margin-left: -8px; }
+      .sp-av svg { width: 14px; height: 14px; }
+      .sp-pill-text { font-size: 12px; white-space: normal; }
+      .sp-pill-stars { font-size: 12px; letter-spacing: 0; }
+
+      /* Título hero más ajustado */
+      .h1 { font-size: clamp(36px, 10vw, 54px); line-height: 1.12; }
+      .hero-title { margin-bottom: 14px; }
+
+      /* Subtítulo más corto */
+      .hero-sub { font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+
+      /* CTA group */
+      .hero-cta-group { gap: 8px; margin-bottom: 24px; }
+      .hero-cta-group .btn { padding: 16px 40px; font-size: 15px; width: 100%; max-width: 320px; }
+
+      /* Trust items en una sola fila centrada */
+      .hero-trust { gap: 12px; font-size: 12px; justify-content: center; }
+      .trust-icon { font-size: 12px; }
+
+      /* Before/After */
+      .ba-wrap { max-width: 100%; gap: 6px; }
+
+      /* Secciones: menos padding */
+      .stats-section, .pain-section, .inside-section,
+      .why-section, .testimonials-section, .pricing-section,
+      .guarantee-section, .faq-section { padding: 52px 16px; }
+      .cta-bottom { padding: 72px 16px; }
+
+      /* Grids */
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .pain-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
       .bonus-grid { grid-template-columns: 1fr; }
-      .guarantee-box { flex-direction: column; gap: 16px; padding: 28px 24px; }
-      .ba-wrap { max-width: 320px; }
+
+      /* Cards */
+      .pricing-card { padding: 28px 20px; }
+      .guarantee-box { flex-direction: column; gap: 16px; padding: 24px 16px; }
+      .guarantee-box img, .guarantee-box svg { width: 48px; }
+
+      /* Tipografía secciones */
+      .h2 { font-size: clamp(26px, 7vw, 38px); }
+      .section-tag { font-size: 11px; }
+
+      /* FAQ */
+      .faq-q { font-size: 15px; padding: 16px; }
+      .faq-a { font-size: 14px; padding: 0 16px 16px; }
+
+      /* Testi marquee: cards más pequeñas */
+      .testi-card { width: 260px; padding: 18px 16px; }
     }
   </style>
 </head>
