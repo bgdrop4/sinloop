@@ -6,11 +6,10 @@
   <meta name="description" content="SINLOOP — El sistema completo para eliminar los vicios, construir hábitos de élite y convertirte en un superhumano.">
   <link rel="canonical" href="https://sinloop.store/">
   <meta property="og:title" content="SINLOOP — El Sistema de Transformación Masculina">
-  <meta property="og:description" content="Elimina los vicios. Construye el sistema. Conviértete en superhumano. El eBook de transformación masculina validado con +100K views.">
+  <meta property="og:description" content="Elimina los vicios. Construye el sistema. Conviértete en superhumano.">
   <meta property="og:url" content="https://sinloop.store/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SINLOOP — El Sistema de Transformación Masculina">
   <title>SINLOOP — Rompe el Loop. Conviértete en Superhumano.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,45 +89,50 @@
 
     .btn {
       display: inline-block;
-      background: var(--gold);
+      background: linear-gradient(135deg, #D9A520, #E9B658);
       color: #000;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      padding: 17px 44px;
-      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 18px 40px;
+      border-radius: 9999px;
       text-decoration: none;
-      transition: background .2s, transform .2s, box-shadow .2s;
+      transition: opacity .2s, transform .2s, box-shadow .2s;
       border: none;
       cursor: pointer;
+      box-shadow: rgba(217,165,32,0.38) 0px 0px 0px 1px, rgba(217,165,32,0.15) 0px 8px 32px;
     }
 
     .btn:hover {
-      background: var(--gold2);
+      opacity: .88;
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(212,160,30,0.35);
+      box-shadow: rgba(217,165,32,0.5) 0px 0px 0px 1px, rgba(217,165,32,0.3) 0px 12px 40px;
     }
 
     .btn-outline {
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,0.2);
+      background: #1A1A1A;
+      border: 1px solid rgba(255,255,255,0.1);
       color: var(--white);
+      box-shadow: none;
+      border-radius: 12px;
     }
 
     .btn-outline:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.4);
+      background: #222;
+      border-color: rgba(255,255,255,0.2);
       box-shadow: none;
+      transform: translateY(-1px);
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: rgba(18,18,18,0.9);
+      border: 1px solid rgba(46,46,46,1);
       border-radius: var(--radius);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2);
     }
 
     .card-gold {
-      border-color: var(--border-g);
+      border-color: rgba(212,160,30,0.3);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2), inset 0 0 60px rgba(212,160,30,0.03);
     }
 
     /* ── ANIMATIONS ── */
@@ -138,9 +142,28 @@
     }
 
     @keyframes glow-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(212,160,30,0.5); }
-      50%       { box-shadow: 0 0 0 10px rgba(212,160,30,0); }
+      0%, 100% { box-shadow: rgba(217,165,32,0.38) 0px 0px 0px 1px, rgba(217,165,32,0.1) 0px 0px 0px 0px; }
+      50%       { box-shadow: rgba(217,165,32,0.5) 0px 0px 0px 1px, rgba(217,165,32,0.35) 0px 0px 40px 8px; }
     }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
 
     /* ════════════════════════════════════════════
        NAV
@@ -361,7 +384,7 @@
        BLUEPRINT / SYSTEM INTRO
     ════════════════════════════════════════════ */
     .blueprint-section {
-      padding: 100px 24px;
+      padding: 80px 24px;
       text-align: center;
     }
 
@@ -405,7 +428,7 @@
     /* ════════════════════════════════════════════
        PAIN POINTS
     ════════════════════════════════════════════ */
-    .pain-section { padding: 100px 24px; }
+    .pain-section { padding: 80px 24px; }
 
     .pain-grid {
       display: grid;
@@ -458,7 +481,7 @@
     /* ════════════════════════════════════════════
        WHAT'S INSIDE — 4 FASES
     ════════════════════════════════════════════ */
-    .inside-section { padding: 100px 24px; background: var(--bg2); }
+    .inside-section { padding: 80px 24px; background: var(--bg2); }
 
     .phases-list {
       display: flex;
@@ -557,7 +580,7 @@
     /* ════════════════════════════════════════════
        WHY THIS WORKS
     ════════════════════════════════════════════ */
-    .why-section { padding: 100px 24px; text-align: center; }
+    .why-section { padding: 80px 24px; text-align: center; }
 
     .why-grid {
       display: grid;
@@ -594,23 +617,41 @@
        TESTIMONIALS
     ════════════════════════════════════════════ */
     .testimonials-section {
-      padding: 100px 24px;
+      padding: 80px 0;
       background: var(--bg2);
+      overflow: hidden;
     }
 
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 52px;
+    .testi-section-inner {
+      padding: 0 24px;
+      margin-bottom: 40px;
+      text-align: center;
     }
+
+    /* Marquee track */
+    .testi-marquee-wrap {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .testi-marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+
+    .testi-marquee-track:hover { animation-play-state: paused; }
 
     .testi-card {
-      padding: 26px 24px;
+      padding: 24px 22px;
       border-radius: var(--radius);
       display: flex;
       flex-direction: column;
       gap: 14px;
+      width: 300px;
+      flex-shrink: 0;
     }
 
     .testi-header {
@@ -686,7 +727,7 @@
     /* ════════════════════════════════════════════
        PRICING
     ════════════════════════════════════════════ */
-    .pricing-section { padding: 100px 24px; text-align: center; }
+    .pricing-section { padding: 80px 24px; text-align: center; }
 
     .pricing-sub {
       font-size: 16px;
@@ -792,13 +833,13 @@
       display: block;
       width: 100%;
       text-align: center;
-      padding: 16px;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      padding: 18px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 9999px;
       transition: all .2s;
     }
 
@@ -840,7 +881,7 @@
     /* ════════════════════════════════════════════
        FAQ
     ════════════════════════════════════════════ */
-    .faq-section { padding: 100px 24px; }
+    .faq-section { padding: 80px 24px; }
 
     .faq-list {
       margin-top: 48px;
@@ -1031,7 +1072,7 @@
   <!-- ══════════════════════════════ STATS ════════════════════════════ -->
   <section class="stats-section">
     <div class="container">
-      <div class="stats-grid">
+      <div class="stats-grid reveal">
         <div class="stat-card card">
           <span class="stat-num">4</span>
           <span class="stat-lbl">Fases del Sistema</span>
@@ -1062,7 +1103,7 @@
       <p style="color:var(--gray2); margin-top:16px; font-size:16px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
         Todo lo que necesitas para transformar tu mente, cuerpo y espíritu en una sola guía completa y directa.
       </p>
-      <div class="ebook-mockup">
+      <div class="ebook-mockup reveal">
         <p class="ebook-tag">eBook Digital</p>
         <h3 class="ebook-title">SINLOOP<br><span class="gold" style="font-size:18px; font-weight:500;">El Sistema de Transformación Masculina</span></h3>
         <div class="ebook-divider"></div>
@@ -1083,7 +1124,7 @@
         <span class="label">El Problema</span>
         <h2 class="h2">Sabes Que Algo<br><span class="gold">Está Fallando</span></h2>
       </div>
-      <div class="pain-grid" style="margin-top:52px;">
+      <div class="pain-grid reveal" style="margin-top:52px;">
         <div class="pain-card card">
           <span class="pain-card-icon">🔁</span>
           <p class="pain-card-title">Atrapado en el mismo loop</p>
@@ -1105,7 +1146,7 @@
           <p class="pain-card-text">Sin rutina de imagen, sin gym constante, sin cuidado personal. Sabes que hay una versión mejor de ti que no has sacado.</p>
         </div>
       </div>
-      <div class="pain-bridge">
+      <div class="pain-bridge reveal">
         <p>¿Y si existiera un <strong>sistema completo</strong> para salir del loop de una vez por todas?</p>
       </div>
     </div>
@@ -1119,7 +1160,7 @@
         <h2 class="h2">+30 Páginas de<br><span class="gold">Contenido Accionable</span></h2>
       </div>
 
-      <div class="phases-list">
+      <div class="phases-list reveal">
         <div class="phase-row card">
           <span class="phase-num">01</span>
           <div class="phase-content">
@@ -1155,7 +1196,7 @@
       </div>
 
       <!-- BONUS -->
-      <div class="bonus-card card card-gold" style="padding:28px;">
+      <div class="bonus-card card card-gold reveal" style="padding:28px;">
         <p class="bonus-label">También Incluido</p>
         <p class="bonus-title">Recursos Extra</p>
         <div class="bonus-grid">
@@ -1176,7 +1217,7 @@
       <p style="color:var(--gray2); margin-top:16px; font-size:16px; max-width:500px; margin-left:auto; margin-right:auto; line-height:1.7;">
         No es otro libro de autoayuda genérico. Es un manual táctico diseñado para resultados medibles.
       </p>
-      <div class="why-grid">
+      <div class="why-grid reveal">
         <div class="why-card card">
           <span class="why-icon">🎯</span>
           <p class="why-title">Sistema, No Motivación</p>
@@ -1198,20 +1239,18 @@
 
   <!-- ══════════════════════════════ TESTIMONIALS ══════════════════════ -->
   <section class="testimonials-section">
-    <div class="container">
-      <div style="text-align:center;">
-        <span class="label">Resultados Reales</span>
-        <h2 class="h2">Hombres Que Ya<br><span class="gold">Rompieron el Loop</span></h2>
-        <p style="color:var(--gray2); margin-top:14px; font-size:15px;">Únete a los que ya están operando a otro nivel.</p>
-      </div>
-      <div class="testi-grid">
+    <div class="testi-section-inner reveal">
+      <span class="label">Resultados Reales</span>
+      <h2 class="h2">Hombres Que Ya<br><span class="gold">Rompieron el Loop</span></h2>
+      <p style="color:var(--gray2); margin-top:12px; font-size:15px;">Únete a los que ya están operando a otro nivel.</p>
+    </div>
+    <div class="testi-marquee-wrap">
+      <div class="testi-marquee-track">
+        <!-- Set 1 -->
         <div class="testi-card card">
           <div class="testi-header">
             <div class="testi-avatar">J</div>
-            <div class="testi-meta">
-              <p class="testi-name">Javier R.</p>
-              <p class="testi-info">24 años · 6 semanas</p>
-            </div>
+            <div class="testi-meta"><p class="testi-name">Javier R.</p><p class="testi-info">24 años · 6 semanas</p></div>
           </div>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">Llevaba 2 años intentando dejar el porno. Con el protocolo de SINLOOP lo conseguí en 3 semanas. La rutina de mañana cambió mi energía por completo.</p>
@@ -1220,10 +1259,7 @@
         <div class="testi-card card">
           <div class="testi-header">
             <div class="testi-avatar">A</div>
-            <div class="testi-meta">
-              <p class="testi-name">Alejandro M.</p>
-              <p class="testi-info">31 años · 2 meses</p>
-            </div>
+            <div class="testi-meta"><p class="testi-name">Alejandro M.</p><p class="testi-info">31 años · 2 meses</p></div>
           </div>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">La fase de Imagen Élite me abrió los ojos. Nunca había prestado atención al skincare. Ahora la gente me pregunta qué hago diferente. Vale 10x el precio.</p>
@@ -1232,14 +1268,93 @@
         <div class="testi-card card">
           <div class="testi-header">
             <div class="testi-avatar">D</div>
-            <div class="testi-meta">
-              <p class="testi-name">Daniel S.</p>
-              <p class="testi-info">19 años · 4 semanas</p>
-            </div>
+            <div class="testi-meta"><p class="testi-name">Daniel S.</p><p class="testi-info">19 años · 4 semanas</p></div>
           </div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">Dudaba porque soy joven y pensé que no era para mí. Error. El apartado de mentalidad y negocios me hizo ver la vida diferente. Ya tengo mi primer cliente.</p>
+          <p class="testi-quote">Dudaba porque soy joven y pensé que no era para mí. Error. El apartado de mentalidad me hizo ver la vida diferente. Ya tengo mi primer cliente.</p>
           <span class="testi-result">Primer negocio a los 19 años</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">M</div>
+            <div class="testi-meta"><p class="testi-name">Miguel Á.</p><p class="testi-info">27 años · 3 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">El capítulo de meditación y respiración me cambió la vida. El box breathing en momentos de estrés es brutal. Nunca hubiera pensado que funcionaba tan rápido.</p>
+          <span class="testi-result">Ansiedad reducida en 2 semanas</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">C</div>
+            <div class="testi-meta"><p class="testi-name">Carlos T.</p><p class="testi-info">22 años · 1 mes</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">El plan de gym de 3 días/semana es exactamente lo que necesitaba. Sin complicaciones. Ya soy más fuerte y noto los cambios físicos a las 4 semanas.</p>
+          <span class="testi-result">+6kg músculo en 30 días</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">R</div>
+            <div class="testi-meta"><p class="testi-name">Rubén G.</p><p class="testi-info">29 años · 5 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Compré el Elite y los bonus son una locura. El tracker de 30 días me mantiene accountable cada día. Es el mejor €37 que he gastado en mi vida.</p>
+          <span class="testi-result">Hábitos diarios mantenidos 35 días</span>
+        </div>
+        <!-- Set 2 duplicado para loop infinito -->
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">J</div>
+            <div class="testi-meta"><p class="testi-name">Javier R.</p><p class="testi-info">24 años · 6 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Llevaba 2 años intentando dejar el porno. Con el protocolo de SINLOOP lo conseguí en 3 semanas. La rutina de mañana cambió mi energía por completo.</p>
+          <span class="testi-result">NoFap conseguido en 21 días</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">A</div>
+            <div class="testi-meta"><p class="testi-name">Alejandro M.</p><p class="testi-info">31 años · 2 meses</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">La fase de Imagen Élite me abrió los ojos. Nunca había prestado atención al skincare. Ahora la gente me pregunta qué hago diferente. Vale 10x el precio.</p>
+          <span class="testi-result">Glow up total en 8 semanas</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">D</div>
+            <div class="testi-meta"><p class="testi-name">Daniel S.</p><p class="testi-info">19 años · 4 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Dudaba porque soy joven y pensé que no era para mí. Error. El apartado de mentalidad me hizo ver la vida diferente. Ya tengo mi primer cliente.</p>
+          <span class="testi-result">Primer negocio a los 19 años</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">M</div>
+            <div class="testi-meta"><p class="testi-name">Miguel Á.</p><p class="testi-info">27 años · 3 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">El capítulo de meditación y respiración me cambió la vida. El box breathing en momentos de estrés es brutal. Nunca hubiera pensado que funcionaba tan rápido.</p>
+          <span class="testi-result">Ansiedad reducida en 2 semanas</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">C</div>
+            <div class="testi-meta"><p class="testi-name">Carlos T.</p><p class="testi-info">22 años · 1 mes</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">El plan de gym de 3 días/semana es exactamente lo que necesitaba. Sin complicaciones. Ya soy más fuerte y noto los cambios físicos a las 4 semanas.</p>
+          <span class="testi-result">+6kg músculo en 30 días</span>
+        </div>
+        <div class="testi-card card">
+          <div class="testi-header">
+            <div class="testi-avatar">R</div>
+            <div class="testi-meta"><p class="testi-name">Rubén G.</p><p class="testi-info">29 años · 5 semanas</p></div>
+          </div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">Compré el Elite y los bonus son una locura. El tracker de 30 días me mantiene accountable cada día. Es el mejor €37 que he gastado en mi vida.</p>
+          <span class="testi-result">Hábitos diarios mantenidos 35 días</span>
         </div>
       </div>
     </div>
@@ -1252,7 +1367,7 @@
       <h2 class="h2">Invierte En Tu<br><span class="gold">Mejor Versión</span></h2>
       <p class="pricing-sub">Descarga inmediata · Precio de lanzamiento · Garantía 7 días</p>
 
-      <div class="pricing-grid">
+      <div class="pricing-grid reveal">
 
         <!-- CORE -->
         <div class="price-card card">
@@ -1307,7 +1422,7 @@
   <!-- ══════════════════════════════ GUARANTEE ════════════════════════ -->
   <section class="guarantee-section">
     <div class="container-sm" style="display:flex; justify-content:center;">
-      <div class="guarantee-box">
+      <div class="guarantee-box reveal">
         <span class="shield-icon">🛡️</span>
         <div>
           <p class="guarantee-title">Garantía Total 7 Días</p>
@@ -1324,7 +1439,7 @@
         <span class="label">Preguntas Frecuentes</span>
         <h2 class="h2">Frequently Asked<br><span class="gold">Questions</span></h2>
       </div>
-      <div class="faq-list">
+      <div class="faq-list reveal">
         <details>
           <summary>¿Para quién es SINLOOP? <span class="faq-icon">+</span></summary>
           <p class="faq-body">Para cualquier hombre entre 18 y 35 años que sienta que está viviendo por debajo de su potencial. No importa desde dónde partas, el sistema se adapta a tu punto de inicio.</p>
@@ -1364,13 +1479,28 @@
   <!-- ══════════════════════════════ FOOTER ════════════════════════════ -->
   <footer>
     <p class="footer-logo">SINLOOP</p>
-    <p style="margin-bottom:12px;">© 2026 SINLOOP · sinloop.store · Todos los derechos reservados</p>
+    <p style="margin-bottom:4px; color:#555; font-size:13px;">sinloop.store</p>
+    <p style="margin-bottom:12px;">© 2026 SINLOOP · Todos los derechos reservados</p>
     <div>
       <a href="https://sinloop.store/policies/privacy-policy">Privacidad</a>
       <a href="https://sinloop.store/policies/terms-of-service">Términos</a>
       <a href="https://sinloop.store/policies/refund-policy">Devoluciones</a>
     </div>
   </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
